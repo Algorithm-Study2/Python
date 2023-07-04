@@ -1,0 +1,11 @@
+def solution(citations):
+    citations.sort(reverse=True)  # 큰 수 부터 정렬 [6, 5, 3, 1, 0]
+    h_index = 0                   # h_index 초기화
+
+    for i in range(len(citations)):# list 길이만큼 0~
+        if citations[i] >= (i+1):  # 인용횟수가 sort 된 순서보다 클 경우
+            h_index = i+1          # h_index 저장
+        else:                      # 아닐경우 for 문을 빠져나옴
+            break
+
+    return h_index
