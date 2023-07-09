@@ -1,0 +1,37 @@
+def solution(answers):
+    answer = []
+    person1 = [1, 2, 3, 4, 5]                # 5
+    person2 = [2, 1, 2, 3, 2, 4, 2, 5]       # 8
+    person3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5] # 10
+    num_correct = [0, 0, 0]                  # 정답 횟수 저장
+    answers_len = len(answers)               # 길이 저장
+    
+    # 정답 총 길이와 수포자의 찍기 패턴 길이를 나눴을 때 몫 보다 1 을 더해준 값 만큼 닶의 수를 늘려준다.
+    if answers_len / len(person1) > 0:       
+        person1 *= int(answers_len / len(person1)) + 1
+    
+    if answers_len / len(person2) > 0:
+        person2 *= int(answers_len / len(person2)) + 1
+    
+    if answers_len / len(person3) > 0:
+        person3 *= int(answers_len / len(person3)) + 1
+    
+    # 수포자가 찍은 번호와 정답의 번호를 비교해서 정답일 경우 정답 횟수에 1을 더한다.
+    for i, a in enumerate(answers):
+        if a == person1[i]:
+            num_correct[0] += 1
+            
+        if a == person2[i]:
+            num_correct[1] += 1
+            
+        if a == person3[i]:
+            num_correct[2] += 1
+    
+    # 가장 많이 맞춘 사람을 찾기 위해 맞춘 횟수가 가장 높은 값을 
+    # 저장하고 그 값과 비교하여 가장 높은 점수를 받은 사람을 찾는다.
+    max_correct = max(num_correct)
+    for index, n in enumerate(num_correct):
+        if max_correct == n:
+            answer.append(index+1)
+    
+    return answer
