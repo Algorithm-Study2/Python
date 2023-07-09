@@ -1,0 +1,9 @@
+def solution(sizes):
+    sort_list1 =[[],[]]              # 명함의 작은 길이는 [0]에 저장 큰 길이는 [1] 에 저장
+    
+    for s in sizes:                  
+        s.sort()                     # 명함의 크기를 길이부터 재배정
+        sort_list1[0].append(s[0])   # 작은 길이는 [0]에 저장
+        sort_list1[1].append(s[1])   # 긴 길이는 [1]에 저장
+        
+    return max(sort_list1[0]) * max(sort_list1[1]) # 명함의 최소 길이 반환
